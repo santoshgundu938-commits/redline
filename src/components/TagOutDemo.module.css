@@ -1,0 +1,231 @@
+.demo {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* ---------- The contract sheet ---------- */
+
+.sheet {
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 4vw, 3.25rem) clamp(2rem, 4vw, 3.25rem);
+  font-family: var(--font-doc), "Times New Roman", serif;
+  font-size: clamp(0.98rem, 0.3vw + 0.9rem, 1.06rem);
+  line-height: 1.56;
+  box-shadow: 0 30px 70px -30px rgb(0 0 0 / 0.8);
+}
+
+.madeUp {
+  position: absolute;
+  top: 0;
+  right: clamp(1rem, 3vw, 2rem);
+  transform: translateY(-50%);
+  background: var(--ground);
+  color: var(--on-ground);
+  font-family: var(--font-sign), var(--font-ui), sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem 0.25rem;
+}
+
+.docTitle {
+  font-family: var(--font-doc), serif;
+  font-weight: 700;
+  font-size: 1.2em;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.1em;
+}
+
+.parties {
+  margin-bottom: 1.3em;
+}
+
+.clause + .clause {
+  margin-top: 1.1em;
+}
+
+.clauseHeading {
+  font-family: var(--font-doc), serif;
+  font-size: 1em;
+  font-weight: 700;
+  margin-bottom: 0.2em;
+}
+
+.clauseText {
+  max-width: var(--measure);
+}
+
+/* ---------- Flagged sentences ---------- */
+
+.mark {
+  color: inherit;
+  background: transparent;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.05em 0.1em;
+  margin: 0 -0.1em;
+  transition:
+    background-color 260ms var(--ease-snap),
+    box-shadow 260ms var(--ease-snap);
+}
+
+.mark.danger {
+  --tint: var(--danger-tint);
+  --hit: var(--danger);
+}
+.mark.warning {
+  --tint: var(--warning-tint);
+  --hit: var(--warning);
+}
+.mark.caution {
+  --tint: var(--caution-tint);
+  --hit: #d9a900;
+}
+
+/* Without script, or once applied, a flagged sentence carries its tint. */
+.mark,
+:global(.js) .demo .mark.applied {
+  background-color: var(--tint);
+  box-shadow: inset 0 -3px 0 var(--hit);
+}
+
+:global(.js) .demo:not(.finished) .mark:not(.applied) {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 transparent;
+}
+
+.demo .mark.active,
+:global(.js) .demo .mark.applied.active {
+  box-shadow: inset 0 -0.35em 0 var(--hit);
+}
+
+/* ---------- Labels ---------- */
+
+.inlineLabel {
+  margin: 1rem 0 0.4rem;
+}
+
+.column {
+  display: none;
+}
+
+.leaders {
+  display: none;
+}
+
+/* A label lands in one snap: it arrives at full opacity, travelling on one axis. */
+.pinned,
+.inlineLabel {
+  transition: transform 140ms var(--ease-snap);
+}
+
+:global(.js) .demo:not(.finished) .pinned:not(.applied),
+:global(.js) .demo:not(.finished) .inlineLabel:not(.applied) {
+  opacity: 0;
+  transform: translateX(14px);
+  animation: failsafe 0s 5s forwards;
+}
+
+.pinned.active,
+.inlineLabel.active {
+  transform: translateX(-6px);
+}
+
+.pinned.dimmed,
+.inlineLabel.dimmed {
+  opacity: 0.62;
+}
+
+@keyframes failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@container demo (min-width: 780px) {
+  .demo {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    column-gap: 2.6rem;
+  }
+
+  .inlineLabel {
+    display: none;
+  }
+
+  .column {
+    display: block;
+    position: relative;
+  }
+
+  .pinned {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .pinned:nth-child(2) {
+    left: 0.9rem;
+  }
+
+  .pinned:nth-child(3) {
+    left: 1.8rem;
+  }
+
+  .leaders {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .leader {
+    fill: none;
+    stroke: var(--on-ground);
+    stroke-width: 2;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    transition:
+      stroke-dashoffset 420ms var(--ease-snap) 120ms,
+      stroke-width 200ms ease-out,
+      opacity 180ms ease-out;
+  }
+
+  .leader.danger {
+    stroke-width: 3;
+  }
+
+  :global(.js) .demo:not(.finished) .leader:not(.applied) {
+    stroke-dashoffset: 1;
+  }
+
+  .leader.active {
+    stroke-width: 4;
+  }
+
+  .leader.dimmed {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.js) .demo:not(.finished) .pinned:not(.applied),
+  :global(.js) .demo:not(.finished) .inlineLabel:not(.applied) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .pinned.active,
+  .inlineLabel.active {
+    transform: none;
+  }
+}

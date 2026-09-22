@@ -33,6 +33,7 @@ Not served in v1: renters, terms of service and platform terms, anyone who has a
 - Never tell the freelancer whether to sign, and never claim a clause is enforceable (ADR 0009).
 - A freelancer can read only their own documents and red lines.
 - Ask before adding a dependency.
+- All copy a user reads in this product, meaning the landing page, UI labels, error messages and empty states, has to be run through the humanizer skill before it is committed. Copy that reads as though a model wrote it is a defect, not a matter of taste.
 
 ## Git
 - Commit locally in small steps. Never push; the user reviews and pushes.

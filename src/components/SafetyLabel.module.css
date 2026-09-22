@@ -1,0 +1,150 @@
+.label {
+  --border: 4px;
+  --panel-bg: var(--ink);
+  --panel-fg: var(--paper);
+  --symbol-triangle: var(--paper);
+  --symbol-mark: var(--ink);
+
+  display: block;
+  background: var(--paper);
+  color: var(--ink);
+  border: var(--border) solid var(--ink);
+  font-family: var(--font-ui), system-ui, sans-serif;
+  box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.55);
+}
+
+.danger {
+  --border: 6px;
+  --panel-bg: var(--danger);
+  --panel-fg: var(--paper);
+  --symbol-triangle: var(--paper);
+  --symbol-mark: var(--danger);
+}
+
+.warning {
+  --border: 5px;
+  --panel-bg: var(--warning);
+  --panel-fg: var(--ink);
+  --symbol-triangle: var(--ink);
+  --symbol-mark: var(--warning);
+}
+
+.caution {
+  --border: 4px;
+  --panel-bg: var(--caution);
+  --panel-fg: var(--ink);
+  --symbol-triangle: var(--ink);
+  --symbol-mark: var(--caution);
+}
+
+.notice {
+  --border: 4px;
+  --panel-bg: var(--notice);
+  --panel-fg: var(--paper);
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.3em 0.6em 0.3em 0.5em;
+  background: var(--panel-bg);
+  color: var(--panel-fg);
+  border-bottom: var(--border) solid var(--ink);
+}
+
+.symbol {
+  flex: none;
+  width: 1.15em;
+  height: 1.05em;
+}
+
+.symbolTriangle {
+  fill: var(--symbol-triangle);
+  stroke: var(--symbol-triangle);
+}
+
+.symbolMark {
+  fill: var(--symbol-mark);
+}
+
+.word {
+  font-family: var(--font-sign), var(--font-ui), sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding-top: 0.06em;
+}
+
+.rank {
+  margin-left: auto;
+  font-family: var(--font-sign), var(--font-ui), sans-serif;
+  font-weight: 700;
+  font-size: 0.62em;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.message {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.8rem 0.95rem 0.95rem;
+}
+
+.hazard {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.consequence {
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.ask {
+  margin-top: 0.2rem;
+  padding-top: 0.6rem;
+  border-top: 2px solid var(--ink);
+  line-height: 1.4;
+}
+
+.askLead {
+  font-family: var(--font-sign), var(--font-ui), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 0.3em;
+}
+
+/* Size on the contract sheet: severity sets scale and border weight. */
+.sheet.danger .panel {
+  font-size: 1.7rem;
+}
+.sheet.warning .panel {
+  font-size: 1.45rem;
+}
+.sheet.caution .panel {
+  font-size: 1.25rem;
+}
+.sheet.notice .panel {
+  font-size: 1.25rem;
+}
+
+.sheet .message {
+  font-size: 0.94rem;
+  gap: 0.35rem;
+  padding: 0.7rem 0.85rem 0.8rem;
+}
+.sheet.caution .message {
+  font-size: 0.9rem;
+}
+
+/* Full-width use in page sections. */
+.full .panel {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+.full .message {
+  font-size: 1.05rem;
+  padding: 1rem 1.2rem 1.2rem;
+}

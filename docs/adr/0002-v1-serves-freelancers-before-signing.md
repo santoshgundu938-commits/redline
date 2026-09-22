@@ -1,6 +1,6 @@
 # 0002. v1 serves freelancers reviewing negotiable contracts before signing
 
-Status: Accepted
+Status: Accepted, amended by ADR 0015 (landing page audience)
 Date: 2026-09-16
 
 v1 is for freelancers reviewing a client's contract before they sign it. It is designed for negotiable contracts (ADR 0010 covers other uploads), because the drafted counter-offer is useless when the other side will not change the terms. The research gives freelancers the strongest evidence of harm (uncapped indemnity and liability) and of willingness to pay (a ~$400 lawyer benchmark, a live $99 competitor).
