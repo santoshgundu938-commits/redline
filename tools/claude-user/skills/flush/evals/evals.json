@@ -1,0 +1,23 @@
+{
+  "skill_name": "flush",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "ok let's wrap up. flush",
+      "expected_output": "A plan, no files written: Postmark decision as ADR 0002 plus CLAUDE.md diff moving email provider out of 'Not yet decided' (separate yes needed, 40-line limit respected); currency formats stays deferred; zod suggestion not filed as a decision; 'draft' term needs CONTEXT.md, which is missing so it asks before creating; Postmark retry follow-up as a .scratch ticket with needs-triage.",
+      "files": ["fixtures/decisions-and-deferrals/repo", "fixtures/decisions-and-deferrals/transcript.md"]
+    },
+    {
+      "id": 1,
+      "prompt": "thanks, capture this session before I close",
+      "expected_output": "Says nothing durable to file and writes nothing.",
+      "files": ["fixtures/nothing-durable/repo", "fixtures/nothing-durable/transcript.md"]
+    },
+    {
+      "id": 2,
+      "prompt": "save what we decided",
+      "expected_output": "A plan, no files written: never includes the shipping API key; asks which of CLAUDE.md/AGENTS.md to create; says it would create a decisions folder for the Postgres decision and asks; login deferred and append-only scan rule proposed for the instructions file; CSV export follow-up listed in the report because no tracker exists; warns it is not a git repo.",
+      "files": ["fixtures/bare-repo-with-secret/repo", "fixtures/bare-repo-with-secret/transcript.md"]
+    }
+  ]
+}

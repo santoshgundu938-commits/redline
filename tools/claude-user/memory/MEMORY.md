@@ -1,0 +1,1 @@
+- [skill-creator on Windows](reference_skill_creator_windows.md) — trigger tuning loop broken here; ask before attempting

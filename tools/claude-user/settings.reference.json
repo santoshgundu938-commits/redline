@@ -1,0 +1,33 @@
+{
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "node \"C:/Users/Abias/.claude/statusline.js\""
+  },
+  "enabledPlugins": {
+    "claude-mem@thedotmack": true,
+    "skill-creator@claude-plugins-official": true,
+    "mattpocock-skills@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
+    },
+    "humanizer": {
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer"
+      }
+    }
+  },
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "theme": "dark",
+  "agentPushNotifEnabled": true,
+  "voiceEnabled": true
+}
